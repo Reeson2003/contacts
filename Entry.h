@@ -7,6 +7,7 @@
 
 
 #include <string>
+#include "CharArray.h"
 
 using namespace std;
 
@@ -26,6 +27,10 @@ public:
     virtual const bool operator==(const T &)= 0;
 
     virtual const bool operator!=(const T &)= 0;
+
+    virtual CharArray toCharArray() = 0;
+
+    virtual T deserialize(const CharArray&) = 0;
 };
 
 

@@ -7,17 +7,18 @@
 
 #include <string>
 #include "Entry.h"
-#include "Serializable.h"
 
 
 using namespace std;
 
-class Contact : public Entry<Contact>, public Serializable<Contact> {
+class Contact : public Entry<Contact> {
     string name;
     string phone;
     string address;
 public:
     Contact(string name, string phone, string address);
+
+    Contact(const Contact& contact);
 
     const string &getName() const;
 
@@ -39,9 +40,11 @@ public:
 
     const bool operator!=(const Contact& contact) override;
 
-    char *getChars() override;
+    CharArray toCharArray() override;
 
-    Contact(const char *raw);
+    Contact deserialize(const CharArray &array) override;
+
+    Contact deserialize(const char *raw);
 };
 
 
