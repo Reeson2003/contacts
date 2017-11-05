@@ -30,15 +30,15 @@ void Entry::add(Field field) {
     this->fields.push_back(field);
 }
 
-Entry::Entry(string name, string *fields, int fieldsLength) {
+Entry::Entry(string name, vector<string> fields) {
     this->name = name;
-    for (int i = 0; i < fieldsLength; i++)
+    for (int i = 0; i < fields.size(); i++)
         this->fields.push_back(Field(fields[i], ""));
 }
 
-Entry::Entry(string name, Field *fields, int fieldsLength) {
+Entry::Entry(string name, vector<Field> fields) {
     this->name = name;
-    for (int i = 0; i < fieldsLength; i++)
+    for (int i = 0; i < fields.size(); i++)
         this->fields.push_back(fields[i]);
 }
 
@@ -78,6 +78,17 @@ Entry Entry::fromRAW(const string raw) {
     Entry result = Entry(name);
     result.fields = fields;
     return result;
+}
+
+void Entry::inputFromConsole() {
+    for (int i = 0; i < fields.size(); ++i) {
+        Field f = fields[i];
+        cout << "Enter " << f.getKey() << ":"<< endl;
+        string val;
+        cin >> val;
+        f.setValue(val);
+        fields[i] = f;
+    }
 }
 
 

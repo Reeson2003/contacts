@@ -14,8 +14,6 @@ class Field {
 private:
     string key;
     string value;
-    string formatted;
-    string RAW;
 public:
     Field(const string &key, const string &value);
 
@@ -26,9 +24,11 @@ public:
 
     const string &getValue() const;
 
-    const string &format() const;
+    void setValue(const string value);
 
-    const string &toRAW() const;
+    string format() const;
+
+    string toRAW() const;
 
     static Field fromRAW(string);
 };

@@ -19,9 +19,9 @@ public:
 
     Entry(string);
 
-    Entry(string, string[], int);
+    Entry(string, vector<string>);
 
-    Entry(string, Field[], int);
+    Entry(string, vector<Field>);
 
     virtual ~Entry();
 
@@ -33,6 +33,7 @@ public:
 
     string format();
 
+    void inputFromConsole();
 
 };
 

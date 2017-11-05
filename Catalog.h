@@ -21,9 +21,9 @@ public:
 
     void add(Entry entry);
 
-    void load();
+    void load(string file);
 
-    void save();
+    void save(string file);
 };
 
 

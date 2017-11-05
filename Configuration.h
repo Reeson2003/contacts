@@ -6,6 +6,7 @@
 #define CONTACTS_CONFIGURATION_H
 
 
+#include <vector>
 #include "Properties.h"
 
 class Configuration: public Properties {
@@ -15,6 +16,8 @@ public:
     static Configuration defaultConfiguration();
 
     string get(string key);
+
+    static vector<string> resolveFields(string fileName);
 };
 
 

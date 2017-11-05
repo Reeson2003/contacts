@@ -17,19 +17,19 @@ const string &Field::getValue() const {
 Field::Field(const string &key, const string &value) {
     this->key = key;
     this->value = value;
-    this->formatted = key + ": " + value;
-    this->RAW = key + DELIMETER + value;
 }
 
 Field::~Field() {
 }
 
-const string &Field::format() const {
-    return formatted;
+string Field::format() const {
+    string result = key + ": " + value;
+    return result;
 }
 
-const string &Field::toRAW() const {
-    return RAW;
+string Field::toRAW() const {
+    string result = key + DELIMETER + value;
+    return result;
 }
 
 Field Field::fromRAW(string raw) {
@@ -41,4 +41,8 @@ Field Field::fromRAW(string raw) {
     string key = raw.substr(0, delPos);
     string value = raw.substr(delPos + 1, raw.size() - delPos + 1);
     return Field(key, value);
+}
+
+void Field::setValue(const string value) {
+    this->value = value;
 }

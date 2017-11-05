@@ -5,7 +5,6 @@
 #include <iostream>
 #include <fstream>
 #include "Catalog.h"
-#include "Configuration.h"
 
 void Catalog::print() {
     for (int i = 0; i < entries.size(); ++i) {
@@ -25,20 +24,18 @@ void Catalog::update(int index, Entry entry) {
     entries[index - 1] = entry;
 }
 
-void Catalog::load() {
-    string fileName = Configuration::defaultConfiguration().get("data.file");
+void Catalog::load(string file) {
     ifstream is;
-    is.open(fileName);
+    is.open(file);
     string nextLine;
     while (is >> nextLine) {
         this->add(Entry::fromRAW(nextLine));
     }
 }
 
-void Catalog::save() {
-    string fileName = Configuration::defaultConfiguration().get("data.file");
+void Catalog::save(string file) {
     ofstream os;
-    os.open(fileName);
+    os.open(file);
     for (int i = 0; i < entries.size(); ++i) {
         os << entries[i].toRAW() << "\n";
     }
