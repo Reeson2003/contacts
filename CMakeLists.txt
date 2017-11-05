@@ -3,5 +3,5 @@ project(contacts)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCE_FILES main.cpp Field.cpp Field.h Entry.cpp Entry.h)
+set(SOURCE_FILES main.cpp Field.cpp Field.h Entry.cpp Entry.h Properties.cpp Properties.h Catalog.cpp Catalog.h Configuration.cpp Configuration.h)
 add_executable(contacts ${SOURCE_FILES})

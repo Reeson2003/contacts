@@ -15,6 +15,7 @@ private:
     string key;
     string value;
     string formatted;
+    string RAW;
 public:
     Field(const string &key, const string &value);
 
@@ -26,6 +27,10 @@ public:
     const string &getValue() const;
 
     const string &format() const;
+
+    const string &toRAW() const;
+
+    static Field fromRAW(string);
 };
 
 

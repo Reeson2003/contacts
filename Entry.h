@@ -27,7 +27,13 @@ public:
 
     void add(Field);
 
+    string toRAW() const;
+
+    static Entry fromRAW(string);
+
     string format();
+
+
 };
 
 
