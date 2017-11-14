@@ -41,3 +41,6 @@ void Catalog::save(string file) {
     }
     os.close();
 }
+
+Catalog::Catalog() {
+}

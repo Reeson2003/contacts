@@ -17,7 +17,7 @@ public:
 
     string get(string key);
 
-    static vector<string> resolveFields(string fileName);
+    vector<string> resolveFields();
 };
 
 

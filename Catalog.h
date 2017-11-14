@@ -12,6 +12,12 @@
 class Catalog {
     vector<Entry> entries;
 
+    Catalog();
+
+    Catalog(const Catalog &);
+
+    Catalog &operator=(Catalog &);
+
 public:
     void print();
 
@@ -24,6 +30,11 @@ public:
     void load(string file);
 
     void save(string file);
+
+    static Catalog& getInstance() {
+        static Catalog instance;
+        return instance;
+    };
 };
 
 
