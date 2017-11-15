@@ -8,7 +8,7 @@
 
 void Catalog::print() {
     for (int i = 0; i < entries.size(); ++i) {
-        cout << "[" << i + 1 << "]\n" << entries[i].format();
+        cout << "[" << i << "]\n" << entries[i].format();
     }
 }
 
@@ -17,11 +17,11 @@ void Catalog::add(Entry entry) {
 }
 
 void Catalog::remove(int index) {
-    entries.erase(entries.begin() + index - 1);
+    entries.erase(entries.begin() + index);
 }
 
 void Catalog::update(int index, Entry entry) {
-    entries[index - 1] = entry;
+    entries[index] = entry;
 }
 
 void Catalog::load(string file) {

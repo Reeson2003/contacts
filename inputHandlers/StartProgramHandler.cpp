@@ -9,7 +9,7 @@
 
 using namespace std;
 
-InputHandler* StartInputHandler::execute() {
+InputHandler* StartProgramHandler::execute() {
     cout << "ÛÛÛÛÄÛÄÄÄÛÄÛÛÛÄÛÛÛÄÛÛÛÛÄÛÄÄÄÛÄÛÛÛ\n"
             "ÛÄÄÛÄÛÄÄÄÛÄÛÄÄÄÛÄÄÄÛÄÄÛÄÛÛÄÛÛÄÛ\n"
             "ÛÛÛÛÄÛÄÛÄÛÄÛÛÛÄÛÛÛÄÛÄÄÛÄÛÄÛÄÛÄÛÛÛ\n"
@@ -34,4 +34,4 @@ InputHandler* StartInputHandler::execute() {
     }
 }
 
-StartInputHandler::StartInputHandler() {}
+StartProgramHandler::StartProgramHandler() {}

@@ -3,9 +3,10 @@
 //
 
 #include "ShowEntriesHandler.h"
-#include "MainMenuHandler.h"
 #include "../Menu.h"
 #include "../Catalog.h"
+#include "EntryHandler.h"
+#include "StartProgramHandler.h"
 
 using namespace std;
 
@@ -18,7 +19,10 @@ InputHandler *ShowEntriesHandler::execute() {
         string item = "\n" + entries[i].format();
         menuItems.push_back(item);
     }
+    menuItems.push_back("Main menu");
     Menu menu(menuItems);
     int select = menu.getChoise();
-    return new MainMenuHandler();
+    if (select == menuItems.size() - 1)
+        return new StartProgramHandler();
+    return new EntryHandler(select);
 }

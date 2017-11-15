@@ -10,9 +10,9 @@
 #include "../Program.h"
 #include "../Configuration.h"
 
-class StartInputHandler: public InputHandler{
+class StartProgramHandler: public InputHandler{
 public:
-    StartInputHandler();
+    StartProgramHandler();
 
 public:
     InputHandler* execute() override;

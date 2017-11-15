@@ -5,7 +5,13 @@
 #include "Program.h"
 #include "Catalog.h"
 
-using namespace std;
+using namespace std;Catalog& catalog = Catalog::getInstance();
+//    Entry* entry;
+//    for (int i = 0; i < 3; ++i) {
+//        entry = new Entry(fields);
+//        entry->inputFromConsole();
+//        catalog.add(*entry);
+//    }
 
 int main() {
     //development configuration
@@ -22,13 +28,7 @@ int main() {
 
     Catalog::getInstance().save(file);
 
-//    Catalog& catalog = Catalog::getInstance();
-//    Entry* entry;
-//    for (int i = 0; i < 3; ++i) {
-//        entry = new Entry(fields);
-//        entry->inputFromConsole();
-//        catalog.add(*entry);
-//    }
+//
 
 //    catalog.load(file);
 

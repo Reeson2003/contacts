@@ -27,7 +27,6 @@ void loadFieldset(string file) {
     string nextLine;
     is >> nextLine;
     catalogName = nextLine;
-    is >> nextLine;
     vector<string> result = vector<string>();
     while (is >> nextLine)
         result.push_back(nextLine);

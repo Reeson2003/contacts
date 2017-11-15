@@ -16,7 +16,7 @@ void Program::execute() {
 }
 
 Program::Program() {
-    inputHandler = new StartInputHandler();
+    inputHandler = new StartProgramHandler();
 }
 
 Program::~Program() {
