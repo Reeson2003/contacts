@@ -8,10 +8,12 @@
 
 #include "../InputHandler.h"
 #include "../Program.h"
+#include "../Configuration.h"
 
 class StartInputHandler: public InputHandler{
 public:
     StartInputHandler();
+
 public:
     InputHandler* execute() override;
 };

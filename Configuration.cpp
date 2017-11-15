@@ -5,30 +5,40 @@
 #include <fstream>
 #include "Configuration.h"
 
+vector<string> fieldSet;
+string catalogName;
+
 static const string FILE_PATH = string(getenv("HOMEPATH")) + "/configuration.properties";
 
-Configuration::Configuration(const string &file) : Properties(file) {
-    load();
-}
+void loadFieldset(string);
 
-Configuration Configuration::defaultConfiguration() {
-    Configuration res = Configuration(FILE_PATH);
-    res.load();
-    return res;
+Configuration::Configuration(const string &file): Properties((file == "") ? FILE_PATH : file){
+    load();
+    loadFieldset(get("fieldset.file"));
 }
 
 string Configuration::get(string key) {
     return Properties::get(key);
 }
 
-vector<string> Configuration::resolveFields() {
-    string fileName = get("fieldset.file");
+void loadFieldset(string file) {
     ifstream is;
-    is.open(fileName);
-    vector<string> result = vector<string>();
+    is.open(file);
     string nextLine;
+    is >> nextLine;
+    catalogName = nextLine;
+    is >> nextLine;
+    vector<string> result = vector<string>();
     while (is >> nextLine)
         result.push_back(nextLine);
-    return result;
+    fieldSet = result;
+}
+
+vector<string> Configuration::resolveFields() {
+    return fieldSet;
+}
+
+string Configuration::resolveCatalogName() {
+    return catalogName;
 }
 

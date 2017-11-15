@@ -21,6 +21,10 @@ class Catalog {
 public:
     void print();
 
+    int getSize();
+
+    vector<Entry> getEntries();
+
     void remove(int index);
 
     void update(int index, Entry entry);

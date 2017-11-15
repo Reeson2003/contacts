@@ -6,18 +6,12 @@
 #include "Entry.h"
 
 const char ARRAY_DELIMETER = '#';
-const string NAME = "Name";
-
-Entry::Entry(const string name) {
-    this->fields = vector<Field>();
-    this->name = name;
-}
 
 Entry::~Entry() {
 }
 
 string Entry::format() {
-    string result = "*** " + this->name + " ***\n";
+    string result = "";
     for (int i = 0; i < fields.size(); i++) {
         result += fields[i].format();
         result += "\n";
@@ -30,21 +24,18 @@ void Entry::add(Field field) {
     this->fields.push_back(field);
 }
 
-Entry::Entry(string name, vector<string> fields) {
-    this->name = name;
+Entry::Entry(vector<string> fields) {
     for (int i = 0; i < fields.size(); i++)
         this->fields.push_back(Field(fields[i], ""));
 }
 
-Entry::Entry(string name, vector<Field> fields) {
-    this->name = name;
+Entry::Entry(vector<Field> fields) {
     for (int i = 0; i < fields.size(); i++)
         this->fields.push_back(fields[i]);
 }
 
 string Entry::toRAW() const {
-    string result = name;
-    result += ARRAY_DELIMETER;
+    string result = "";
     for (int i = 0; i < fields.size(); ++i) {
         result += fields[i].toRAW();
         result += ARRAY_DELIMETER;
@@ -59,31 +50,20 @@ Entry Entry::fromRAW(const string raw) {
     vector<Field> fields = vector<Field>();
     for (int i = 0; i < raw.length(); ++i) {
         if (raw[i] == ARRAY_DELIMETER) {
-            if (nameEnd == 0) {
-                nameEnd = i;
-            }
-            if (arrayItemStart == 0) {
-                arrayItemStart = i+1;
-                continue;
-            }
-            if (arrayItemStart != 0) {
-                arrayItemEnd = i;
-                string fieldRaw = raw.substr(arrayItemStart, arrayItemEnd - arrayItemStart);
-                fields.push_back(Field::fromRAW(fieldRaw));
-                arrayItemStart = arrayItemEnd + 1;
-            }
+            arrayItemEnd = i;
+            string fieldRaw = raw.substr(arrayItemStart, arrayItemEnd - arrayItemStart);
+            fields.push_back(Field::fromRAW(fieldRaw));
+            arrayItemStart = arrayItemEnd + 1;
         }
     }
-    string name = raw.substr(0, nameEnd);
-    Entry result = Entry(name);
-    result.fields = fields;
+    Entry result = Entry(fields);
     return result;
 }
 
 void Entry::inputFromConsole() {
     for (int i = 0; i < fields.size(); ++i) {
         Field f = fields[i];
-        cout << "Enter " << f.getKey() << ":"<< endl;
+        cout << "Enter " << f.getKey() << ":" << endl;
         string val;
         cin >> val;
         f.setValue(val);

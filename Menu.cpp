@@ -10,10 +10,10 @@ int getNumber();
 Menu::Menu(const vector<string> &items) : items(items) {}
 
 int Menu::getChoise() {
-    cout << "ENTER NUMBER" << endl;
     for (int i = 0; i < items.size(); ++i) {
         cout << "[" << i+1 << "] " << items[i] << endl;
     }
+    cout << "ENTER NUMBER: ";
     return getNumber() - 1;
 }
 

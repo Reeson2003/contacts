@@ -12,16 +12,12 @@ using namespace std;
 
 class Entry {
 private:
-    string name;
     vector<Field> fields;
 
 public:
+    Entry(vector<string>);
 
-    Entry(string);
-
-    Entry(string, vector<string>);
-
-    Entry(string, vector<Field>);
+    Entry(vector<Field>);
 
     virtual ~Entry();
 

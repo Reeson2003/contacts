@@ -3,24 +3,29 @@
 #include "Properties.h"
 #include "Configuration.h"
 #include "Program.h"
+#include "Catalog.h"
 
 using namespace std;
 
 int main() {
-    Configuration configuration = Configuration("C:/cpp_workspace/contacts/configuration.properties");
+    //development configuration
+    Configuration configuration = Configuration::getInstance("C:/cpp_workspace/contacts/configuration.properties");
 
     vector<string> fields = configuration.resolveFields();
     string file = configuration.get("data.file");
+    Catalog::getInstance().load(file);
 
     Program program;
     for (int i = 0; i < 10; ++i) {
         program.execute();
     }
 
+    Catalog::getInstance().save(file);
+
 //    Catalog& catalog = Catalog::getInstance();
 //    Entry* entry;
 //    for (int i = 0; i < 3; ++i) {
-//        entry = new Entry("Book", fields);
+//        entry = new Entry(fields);
 //        entry->inputFromConsole();
 //        catalog.add(*entry);
 //    }

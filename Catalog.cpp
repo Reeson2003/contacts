@@ -44,3 +44,11 @@ void Catalog::save(string file) {
 
 Catalog::Catalog() {
 }
+
+int Catalog::getSize() {
+    return entries.size();
+}
+
+vector<Entry> Catalog::getEntries() {
+    return entries;
+}

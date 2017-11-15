@@ -9,6 +9,7 @@
 using namespace std;
 
 InputHandler *RemoveEntryHandler::execute() {
+    system("cls");
     cout << "I'm RemoveEntryHandler" << endl;
     return new MainMenuHandler();
 }

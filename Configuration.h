@@ -10,14 +10,27 @@
 #include "Properties.h"
 
 class Configuration: public Properties {
-public:
     Configuration(const string &file);
 
-    static Configuration defaultConfiguration();
+    Configuration();
+
+    Configuration &operator=(Configuration &);
+public:
+
+    static Configuration getInstance(const string &file) {
+        static Configuration instance(file);
+        return instance;
+    }
+
+    static Configuration getInstance() {
+        return getInstance("");
+    }
 
     string get(string key);
 
     vector<string> resolveFields();
+
+    string resolveCatalogName();
 };
 
 

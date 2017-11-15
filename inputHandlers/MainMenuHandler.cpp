@@ -12,6 +12,7 @@
 using namespace std;
 
 InputHandler *MainMenuHandler::execute() {
+    system("cls");
     vector<string> menuItems;
     menuItems.push_back("Show entries");
     menuItems.push_back("Add entry");

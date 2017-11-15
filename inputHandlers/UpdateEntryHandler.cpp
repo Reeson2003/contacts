@@ -10,6 +10,7 @@
 using namespace std;
 
 InputHandler *UpdateEntryHandler::execute() {
+    system("cls");
     cout << "I'm UpdateEntryHandler" << endl;
     return new MainMenuHandler();
 }
