@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 #include "Catalog.h"
 
 void Catalog::print() {
@@ -14,14 +15,17 @@ void Catalog::print() {
 
 void Catalog::add(Entry entry) {
     entries.push_back(entry);
+    std::sort(entries.begin(), entries.end());
 }
 
 void Catalog::remove(int index) {
     entries.erase(entries.begin() + index);
+    std::sort(entries.begin(), entries.end());
 }
 
 void Catalog::update(int index, Entry entry) {
     entries[index] = entry;
+    std::sort(entries.begin(), entries.end());
 }
 
 void Catalog::load(string file) {
@@ -31,6 +35,7 @@ void Catalog::load(string file) {
     while (is >> nextLine) {
         this->add(Entry::fromRAW(nextLine));
     }
+    std::sort(entries.begin(), entries.end());
 }
 
 void Catalog::save(string file) {

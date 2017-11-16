@@ -15,6 +15,14 @@ private:
     vector<Field> fields;
 
 public:
+//    bool operator<(const Entry &rhs) const;
+//
+//    bool operator>(const Entry &rhs) const;
+
+    bool operator<(const Entry &rhs) const;
+
+//    bool operator>=(const Entry &rhs) const;
+
     Entry(vector<string>);
 
     Entry(vector<Field>);

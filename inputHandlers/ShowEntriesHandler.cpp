@@ -6,13 +6,12 @@
 #include "../Menu.h"
 #include "../Catalog.h"
 #include "EntryHandler.h"
-#include "StartProgramHandler.h"
+#include "MainMenuHandler.h"
 
 using namespace std;
 
 InputHandler *ShowEntriesHandler::execute() {
     system("cls");
-//    Catalog::getInstance().print();
     vector<string> menuItems;
     vector<Entry> entries = Catalog::getInstance().getEntries();
     for (int i = 0; i < entries.size(); ++i) {
@@ -23,6 +22,6 @@ InputHandler *ShowEntriesHandler::execute() {
     Menu menu(menuItems);
     int select = menu.getChoise();
     if (select == menuItems.size() - 1)
-        return new StartProgramHandler();
+        return new MainMenuHandler();
     return new EntryHandler(select);
 }

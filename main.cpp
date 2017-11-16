@@ -6,12 +6,6 @@
 #include "Catalog.h"
 
 using namespace std;Catalog& catalog = Catalog::getInstance();
-//    Entry* entry;
-//    for (int i = 0; i < 3; ++i) {
-//        entry = new Entry(fields);
-//        entry->inputFromConsole();
-//        catalog.add(*entry);
-//    }
 
 int main() {
     //development configuration
@@ -22,18 +16,12 @@ int main() {
     Catalog::getInstance().load(file);
 
     Program program;
-    for (int i = 0; i < 10; ++i) {
-        program.execute();
+    for (;;) {
+        if (!program.execute())
+            break;
     }
 
     Catalog::getInstance().save(file);
-
-//
-
-//    catalog.load(file);
-
-//    catalog.save(file);
-//    catalog.print();
 
     return 0;
 }

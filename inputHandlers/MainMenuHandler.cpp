@@ -6,8 +6,7 @@
 #include "../Menu.h"
 #include "ShowEntriesHandler.h"
 #include "AddEntryHandler.h"
-#include "UpdateEntryHandler.h"
-#include "RemoveEntryHandler.h"
+#include "ExitHandler.h"
 
 using namespace std;
 
@@ -16,8 +15,7 @@ InputHandler *MainMenuHandler::execute() {
     vector<string> menuItems;
     menuItems.push_back("Show entries");
     menuItems.push_back("Add entry");
-    menuItems.push_back("Update entry");
-    menuItems.push_back("Remove entry");
+    menuItems.push_back("Exit");
     Menu menu(menuItems);
     int select = menu.getChoise();
     switch (select) {
@@ -26,10 +24,6 @@ InputHandler *MainMenuHandler::execute() {
         case 1:
             return new AddEntryHandler();
         case 2:
-            return new UpdateEntryHandler();
-        case 3:
-            return new RemoveEntryHandler();
-        default:
-            return this;
+            return new ExitHandler();
     }
 }

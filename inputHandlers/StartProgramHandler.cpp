@@ -6,10 +6,12 @@
 #include "StartProgramHandler.h"
 #include "MainMenuHandler.h"
 #include "../Menu.h"
+#include "ExitHandler.h"
 
 using namespace std;
 
-InputHandler* StartProgramHandler::execute() {
+InputHandler *StartProgramHandler::execute() {
+    system("cls");
     cout << "ÛÛÛÛÄÛÄÄÄÛÄÛÛÛÄÛÛÛÄÛÛÛÛÄÛÄÄÄÛÄÛÛÛ\n"
             "ÛÄÄÛÄÛÄÄÄÛÄÛÄÄÄÛÄÄÄÛÄÄÛÄÛÛÄÛÛÄÛ\n"
             "ÛÛÛÛÄÛÄÛÄÛÄÛÛÛÄÛÛÛÄÛÄÄÛÄÛÄÛÄÛÄÛÛÛ\n"
@@ -29,8 +31,10 @@ InputHandler* StartProgramHandler::execute() {
     Menu menu(menuItems);
     int select = menu.getChoise();
     switch (select) {
-        case 0: return new MainMenuHandler();
-        case 1: exit(EXIT_SUCCESS);
+        case 0:
+            return new MainMenuHandler();
+        case 1:
+            return new ExitHandler();
     }
 }
 

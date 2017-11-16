@@ -4,8 +4,9 @@
 
 #include <iostream>
 #include "Menu.h"
+#include "Utils.h"
 
-int getNumber();
+int getNumber(int from, int to);
 
 Menu::Menu(const vector<string> &items) : items(items) {}
 
@@ -13,12 +14,10 @@ int Menu::getChoise() {
     for (int i = 0; i < items.size(); ++i) {
         cout << "[" << i+1 << "] " << items[i] << endl;
     }
-    cout << "ENTER NUMBER: ";
-    return getNumber() - 1;
+    return getNumber(1, items.size()) - 1;
 }
 
-int getNumber() {
-    int num;
-    cin >> num;
+int getNumber(int from, int to) {
+    int num = Utils::getNumber(from, to);
     return num;
 }

@@ -13,7 +13,7 @@ class Program {
 public:
     InputHandler* inputHandler;
 public:
-    void execute();
+    bool execute();
 
     Program();
 

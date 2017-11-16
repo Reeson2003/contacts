@@ -72,4 +72,15 @@ void Entry::inputFromConsole() {
 }
 
 
+bool Entry::operator<(const Entry &rhs) const {
+    bool result(true);
+    for (int i = 0; i < fields.size(); ++i) {
+        if (this->fields[i].getValue() == rhs.fields[i].getValue())
+            continue;
+        else
+            return (this->fields[i].getValue() < rhs.fields[i].getValue());
+    }
+}
+
+
 

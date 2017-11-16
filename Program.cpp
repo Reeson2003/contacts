@@ -9,10 +9,13 @@ void Program::setInputHandler(InputHandler* inputHandler) {
     this->inputHandler = inputHandler;
 }
 
-void Program::execute() {
+bool Program::execute() {
     InputHandler* result = inputHandler->execute();
+    if (!result)
+        return 0;
     delete inputHandler;
     inputHandler = result;
+    return true;
 }
 
 Program::Program() {
