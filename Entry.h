@@ -39,6 +39,7 @@ public:
 
     void inputFromConsole();
 
+    const vector<Field> &getFields() const;
 };
 
 

@@ -82,5 +82,9 @@ bool Entry::operator<(const Entry &rhs) const {
     }
 }
 
+const vector<Field> &Entry::getFields() const {
+    return fields;
+}
+
 
 

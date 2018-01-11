@@ -7,8 +7,14 @@
 
 
 #include "../InputHandler.h"
+#include "../Entry.h"
 
 class ShowEntriesHandler: public InputHandler {
+private:
+    vector<Entry> entries;
+public:
+    ShowEntriesHandler(const vector<Entry> &entries);
+
 public:
     InputHandler *execute() override;
 };

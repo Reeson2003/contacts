@@ -25,7 +25,7 @@ InputHandler *EntryHandler::execute() {
             Entry entry(Configuration::getInstance().resolveFields());
             entry.inputFromConsole();
             Catalog::getInstance().update(entryNumber, entry);
-            return new ShowEntriesHandler();
+            return new ShowEntriesHandler(Catalog::getInstance().getEntries());
         }
         case 1: {
             system("cls");
@@ -37,13 +37,13 @@ InputHandler *EntryHandler::execute() {
             switch (select2) {
                 case 0:
                     Catalog::getInstance().remove(entryNumber);
-                    return new ShowEntriesHandler();
+                    return new ShowEntriesHandler(Catalog::getInstance().getEntries());
                 case 1:
                     return new EntryHandler(entryNumber);
             }
         }
         case 2:
-            return new ShowEntriesHandler();
+            return new ShowEntriesHandler(Catalog::getInstance().getEntries());
     }
 }
 
